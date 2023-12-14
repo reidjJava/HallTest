@@ -7,6 +7,8 @@ import me.reidj.halltest.controller.AbstractScene;
 import me.reidj.halltest.exception.Errors;
 import me.reidj.halltest.user.User;
 
+import java.util.HashMap;
+
 public class AuthorizationController extends AbstractScene {
 
     @FXML
@@ -40,9 +42,20 @@ public class AuthorizationController extends AbstractScene {
             return;
 
         if (App.getApp().getUser() == null) {
-            App.getApp().setUser(new User());
+            App.getApp().setUser(
+                    new User(
+                            name,
+                            surname,
+                            patronymic,
+                            classroom,
+                            new HashMap<>(),
+                            0,
+                            0,
+                            0
+                    )
+            );
         }
 
-        //App.getApp().getPrimaryStage().showScene(App.getApp().getQuestionController().getScene());
+        App.getApp().getPrimaryStage().showScene(App.getApp().getQuestionController().getScene());
     }
 }

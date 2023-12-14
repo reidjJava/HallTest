@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.Setter;
 import me.reidj.halltest.controller.PrimaryStage;
 import me.reidj.halltest.controller.authorization.AuthorizationController;
+import me.reidj.halltest.controller.question.QuestionController;
 import me.reidj.halltest.user.User;
 
 @Getter
@@ -20,6 +21,7 @@ public class App extends Application {
 
     private PrimaryStage primaryStage;
     private AuthorizationController authorizationController;
+    private QuestionController questionController;
 
     @Override
     public void start(Stage stage) {
@@ -27,6 +29,7 @@ public class App extends Application {
 
         primaryStage = new PrimaryStage(stage);
         authorizationController = new AuthorizationController();
+        questionController = new QuestionController();
 
         primaryStage.setScene(authorizationController.getScene());
     }
