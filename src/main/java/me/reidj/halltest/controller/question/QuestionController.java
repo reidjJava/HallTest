@@ -30,6 +30,7 @@ public class QuestionController extends AbstractScene {
     private Iterator<Question> questionIterator;
     private final Gson gson = new Gson();
     private Timeline timeline;
+    private Question currentQuestion;
 
     public QuestionController() {
         super("questions/questionsScene.fxml");
@@ -47,18 +48,16 @@ public class QuestionController extends AbstractScene {
         displayNextQuestion();
     }
 
-    private Question displayNextQuestion() {
+    private void displayNextQuestion() {
         if (questionIterator.hasNext()) {
-            Question currentQuestion = questionIterator.next();
+            currentQuestion = questionIterator.next();
 
             questionLabel.setText("#" + currentQuestion.index + ". " + currentQuestion.text);
 
-            return currentQuestion;
         } else {
-            //App.getApp().getPrimaryStage().showScene(App.getApp().getResultController().getScene());
+            App.getApp().getPrimaryStage().showScene(App.getApp().getResultController().getScene());
             stopTimer();
         }
-        return null;
     }
 
     // Полностью не согласен
@@ -102,7 +101,8 @@ public class QuestionController extends AbstractScene {
         App.getApp()
                 .getUser()
                 .getQuestions()
-                .put(displayNextQuestion(), point);
+                .put(currentQuestion, point);
+        displayNextQuestion();
     }
 
     private QuestionList loadQuestionsFromJson() {

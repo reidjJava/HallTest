@@ -8,9 +8,11 @@ module me.reidj.halltest {
     opens me.reidj.halltest.controller.authorization to javafx.fxml;
     opens me.reidj.halltest.controller.question to javafx.fxml;
     opens me.reidj.halltest.question to com.google.gson;
+    opens me.reidj.halltest.controller.result to javafx.fxml;
 
     exports me.reidj.halltest;
     exports me.reidj.halltest.controller.authorization;
     exports me.reidj.halltest.controller;
     exports me.reidj.halltest.controller.question;
+    exports me.reidj.halltest.controller.result;
 }
