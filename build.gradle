@@ -30,10 +30,10 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.9'
 }
 
-jar {
-    manifest {
-        attributes(
-                'Main-Class': 'me.reidj.halltest.App'
-        )
+afterEvaluate {
+    jar {
+        archiveBaseName.set 'HallTest'
+        from configurations.runtimeClasspath.collect { it.directory ? it : zipTree(it) }
+        duplicatesStrategy DuplicatesStrategy.EXCLUDE
     }
 }
